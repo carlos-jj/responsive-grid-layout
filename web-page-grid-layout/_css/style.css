@@ -1,0 +1,148 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: monospace;
+	color: #333;
+}
+
+.item {
+  display: grid;
+
+	/*margin: 5px;*/
+	background: tomato;
+	/*text-align: center;*/
+	font-size: 1.5em;
+}
+
+.item > h1 {
+  justify-self: center; 
+  align-self: center;
+}
+
+.round-corner{
+  border-radius: 10px;
+}
+
+/*h1 {
+	text-align: center;
+	font-size: 1.25em;
+	font-weight: normal;
+  vertical-align: middle;
+}*/
+
+/* ------------------ grid items ------------------------- */
+
+.logo {
+  grid-area: logo;
+  background-color: darkmagenta !important;
+}
+
+.nav {
+  grid-area: nav;
+}
+
+.main-content {
+  grid-area: MainContent;
+  background-color: aquamarine !important;
+}
+
+.aside-left{
+  grid-area: aside-left;
+  background-color: blanchedalmond !important;
+}
+.aside-right{
+  grid-area: aside-right;
+  background-color: antiquewhite !important;
+}
+
+.sub-content {
+  grid-area: SubContent;
+  background-color: yellow !important;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.mini-footer {
+  grid-area: mini-footer;
+  border-top: 2px solid black;
+  background-color: greenyellow !important;
+}
+
+/* ------------------- grid container -------------------------- */
+
+.grid {
+  
+  height: 100vh;
+
+  display: grid;
+  padding: 5px;
+  gap: 10px;
+}
+
+
+.grid-template-areas {
+  /* grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 80px 720px 500px 400px 50px;
+
+  grid-template-areas:
+  "logo nav nav"
+  "aside-left MainContent aside-right"
+  "SubContent SubContent SubContent"
+  "footer footer footer"
+  "mini-footer mini-footer mini-footer"
+  ; */
+
+  grid-template: 
+  "logo nav nav" minmax(80px,1fr)
+  "aside-left MainContent aside-right" minmax(720px,4fr)
+  "SubContent SubContent SubContent" minmax(500px, 3fr)
+  "footer footer footer" minmax(400px,2fr)
+  "mini-footer mini-footer mini-footer" minmax(50px,1fr)
+  / 1fr 4fr 1fr ;
+}
+
+
+/*Responsive Layout using Grid Layout*/
+
+@media (max-width: 1024px){
+
+  /* Tablet normal */
+
+  .grid-template-areas {
+    grid-template:
+    "logo logo" 1fr
+    "nav nav" 1fr
+    "MainContent MainContent" 6fr
+    "aside-left aside-right" 2fr
+    "SubContent SubContent" 3fr
+    "footer footer" 3fr
+    "mini-footer mini-footer" minmax(50px,1fr)
+    / 1fr 1fr;
+  }
+
+}
+
+
+@media (max-width: 768px){
+  /* mobile normal */
+  .grid-template-areas{
+    grid-template: 
+    "logo" 1fr
+    "nav" 1fr
+    "MainContent" 6fr
+    "aside-left" 2fr
+    "aside-right" 2fr
+    "SubContent" 3fr
+    "footer" 3fr
+    "mini-footer" minmax(50px,1fr)
+    / minmax(280px,1fr) ;
+  }
+}
+
+
